@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Real-time telemetry data</title>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script>
+		$(document).ready(function(){
+			setInterval(function(){
+				$.getJSON("/get_values", function(data){
+					$("#pitch_angle").text(data.pitch_angle);
+					$("#yaw_angle").text(data.yaw_angle);
+					$("#distance_1").text(data.distance_1);
+					$("#distance_2").text(data.distance_2);
+					$("#distance_3").text(data.distance_3);
+					$("#distance_4").text(data.distance_4);
+					$("#pwm_1").text(data.pwm_1);
+					$("#pwm_2").text(data.pwm_2);
+					$("#pwm_3").text(data.pwm_3);
+					$("#pwm_4").text(data.pwm_4);
+					$("#current").text(data.current);
+					$("#velocity").text(data.velocity);
+					$("#mode").text(data.mode);
+				});
+			}, 1000);
+		});
+	</script>
+    <style>
+        .container-1 {
+            display: inline-block;
+            width: 50%;
+            vertical-align: top;
+        }
+
+        .container-2 {
+            display: inline-block;
+            width: 50%;
+            vertical-align: top;
+        }
+        p {
+            font-family: verdana;
+            font-size: 10px;
+            text-align: center;
+        }
+        body {
+            background-color: #F5F5DC;
+        }
+
+        input[type=checkbox] {
+            accent-color: red;
+        }
+
+        input[type=radio] {
+            accent-color: green;
+        }
+        input[type="text"] {
+            width: 150px;
+            display: block;
+            margin-bottom: 10px;
+        }
+        input[type="button"] {
+            width: 120px;
+            margin-left: 35px;
+            display: block;
+        }
+        h1 {
+            color: oral;
+            text-align: center;
+            text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+        }
+
+        .container-1 {
+            display: inline-block;
+            width: 30%;
+            vertical-align: top;
+        }
+
+        .container-2 {
+            display: inline-block;
+            width: 35%;
+            vertical-align: top;
+        }
+        div {
+            background-color: white;
+            width: 100px;
+            height: 450px;
+            border: 15px solid orange;
+            padding: 50px;
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <a href="#">Home | </a>
+    <a href="#">About Us | </a>
+    <a href="#">Mockups | </a>
+    <a href="#">Contact Us | </a>
+
+
+    <h1 style="background-color:#f1f1f1;" >TAMARIW Control Center</h1>
+
+    <div class="container-1">
+        <h1>Telecommand Center</h1>
+        <h3>Select a mode:</h3>
+        <input type="radio" id="option1" name="modes" value="mode1" class="checkmark">
+        <label for="mode1">Idle</label><br>
+        <input type="radio" id="option2" name="modes" value="mode2" class="checkmark">
+        <label for="mode2">Auto Control</label><br>
+        <input type="radio" id="option3" name="modes" value="mode3" class="checkmark">
+        <label for="mode3">Undock</label><br>
+        <input type="radio" id="option4" name="modes" value="mode4" class="checkmark">
+        <label for="mode3">Manuel Mode</label><br>
+        <p id="confirmation"></p>
+
+        <form name="input" action="" method="get">
+            PWM Value:<input type="text" name="Name" value="1 1000 1000 1000 1000" size="20">
+            <input type="button" value="Enter">
+        </form>
+
+    </div>
+
+    <div class="container-2">
+        <h1>Telemetry Data</h1>
+        <table>
+            <tr><td>Pitch Angle:</td><td id="pitch_angle"></td></tr>
+            <tr><td>Yaw Angle:</td><td id="yaw_angle"></td></tr>
+            <tr><td>Distance 1:</td><td id="distance_1"></td></tr>
+            <tr><td>Distance 2:</td><td id="distance_2"></td></tr>
+            <tr><td>Distance 3:</td><td id="distance_3"></td></tr>
+            <tr><td>Distance 4:</td><td id="distance_4"></td></tr>
+            <tr><td>PWM 1:</td><td id="pwm_1"></td></tr>
+            <tr><td>PWM 2:</td><td id="pwm_2"></td></tr>
+            <tr><td>PWM 3:</td><td id="pwm_3"></td></tr>
+            <tr><td>PWM 4:</td><td id="pwm_4"></td></tr>
+            <tr><td>Current:</td> <td id="current"></td></tr>
+            <tr><td>Velocity:</td><td id="velocity"></td></tr>
+            <tr><td>Mode :</td><td id="mode"></td></tr>
+        </table>
+    </div>
+    <footer class="background">
+		<p class="text-footer">
+			Copyright 2023 ©-All rights are reserved 
+		</p>
+	</footer>
+</body>
+</html>
