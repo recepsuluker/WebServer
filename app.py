@@ -12,7 +12,7 @@ ser.reset_input_buffer()
 
 @app.route("/")
 def home():
-    return render_template('clm.html')
+    return render_template('index.html')
 @app.route("/get_values")
 def get_values():
     #this is PWM, current value for
